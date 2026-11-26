@@ -32,6 +32,8 @@ MAX_CHARS = 160
 
 
 def validate(text: str) -> None:
+    # Normalisation note (repair round): strip only the single trailing
+    # newline the entry format adds; the line itself is never altered.
     body = text[:-1] if text.endswith("\n") else text
     if not (1 <= len(body) <= MAX_CHARS):
         raise ValueError("entry length out of range")
